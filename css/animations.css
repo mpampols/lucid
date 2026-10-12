@@ -1,0 +1,13 @@
+/* ---------- animaciones ---------- */
+.flash-ok{animation:okglow .35s ease-out}
+.shake{animation:shake .35s}
+@keyframes okglow{0%{transform:scale(1.06)}100%{transform:scale(1)}}
+@keyframes shake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+@keyframes pop{0%{transform:scale(.6);opacity:.2}100%{transform:scale(1);opacity:1}}
+.pts{position:absolute;top:8px;left:50%;transform:translateX(-50%);font:800 1.3rem var(--f-display);color:var(--ok);pointer-events:none;animation:rise .7s ease-out forwards}
+@keyframes rise{from{opacity:1;transform:translate(-50%,0)}to{opacity:0;transform:translate(-50%,-34px)}}
+
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}

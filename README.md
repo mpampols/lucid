@@ -29,20 +29,60 @@ Lúcid es una web de entrenamiento mental diario. Cada día propone cuatro ejerc
 
 ## Cómo funciona por dentro
 
-Es una sola página (`index.html`) con HTML, CSS y JavaScript, sin frameworks ni compilación. Solo carga dos tipografías de Google Fonts.
+HTML, CSS y JavaScript sin frameworks ni compilación. El JavaScript usa módulos nativos del navegador (`import`/`export`), así que GitHub Pages sirve los archivos tal cual. Solo carga dos tipografías de Google Fonts.
 
 - **Datos**: se guardan en el `localStorage` del navegador (clave `lucid.v2`). No se envía nada a ningún servidor. Desde la pestaña *Progreso* se puede copiar una copia de seguridad y restaurarla en otro navegador.
 - **Sonidos**: se generan con la Web Audio API, sin archivos de audio.
 - **Plan diario**: se calcula a partir de la fecha con un generador pseudoaleatorio con semilla, así que coincide para todos los usuarios sin necesidad de backend.
 
+### Estructura
+
+```
+index.html            Página y estructura base
+assets/               Favicon
+css/
+  tokens.css          Colores, tipografías y temas claro/oscuro
+  base.css            Base, cabecera, pestañas y botones
+  home.css            Pantalla de inicio
+  progress.css        Pantalla de progreso
+  play.css            Partida: barra, intro y resultados
+  games.css           Estilos propios de cada juego
+  animations.css      Animaciones y movimiento reducido
+js/
+  main.js             Punto de entrada y eventos globales
+  state.js            Estado de la app
+  store.js            Guardado (localStorage), migraciones y copias
+  daily.js            Entrenamiento del día y racha
+  engine.js           Motor de partida: tiempo, puntos, resultados
+  nav.js              Navegación entre vistas
+  sound.js            Efectos de sonido
+  icons.js            Iconos SVG
+  confetti.js         Confeti
+  utils.js            Utilidades
+  i18n/               Textos en es, ca y en, y detección de idioma
+  games/              Un archivo por juego + registro (index.js)
+  views/              Cabecera, inicio y progreso
+```
+
+### Añadir un juego
+
+1. Crea `js/games/mijuego.js` con una función `initMiJuego(stage, api)`. Recibe el contenedor y una pequeña API: `api.correct(puntos)`, `api.wrong()`, `api.later(fn, ms)`, `api.key(fn)` y `api.t()` para los textos.
+2. Regístralo en `js/games/index.js` (área, duración o vidas) y añádelo a `ORDER`.
+3. Añade sus textos en `js/i18n/es.js`, `ca.js` y `en.js`, dentro de `games`.
+4. Si necesita estilos, van en `css/games.css`.
+
+El guardado pasa siempre por `js/store.js`: si algún día hay backend, solo hay que cambiar ese módulo.
+
 ## Ejecutarlo en local
 
-No hace falta instalar nada. Abre `index.html` en el navegador o, si prefieres un servidor local:
+Al usar módulos, el navegador no permite abrir `index.html` con doble clic: hace falta un servidor local. Con Python:
 
 ```bash
 python3 -m http.server 8000
 # y abre http://localhost:8000
 ```
+
+También vale `npx serve` o la extensión Live Server de VS Code.
 
 ## Hoja de ruta
 

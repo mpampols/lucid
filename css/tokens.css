@@ -1,0 +1,24 @@
+/* Paleta, tipografías y temas claro/oscuro */
+/* Layout: one centred app column, mobile-first; chunky "pressable" cards and buttons on a cool canvas */
+:root{
+  --bg:#F3F5FA; --surface:#FFFFFF; --ink:#151A30; --muted:#626A85; --line:#DFE3EE; --line-deep:#C7CDDC; --grid:#E9ECF3;
+  --accent:#FF5C39; --accent-deep:#D63F1D; --on-accent:#FFFFFF;
+  --ok:#17A35E; --ok-deep:#0F8048; --bad:#E5484D; --bad-deep:#B8343A;
+  --d-math:#12A399; --d-attn:#EFA20E; --d-mem:#7A5CFA; --d-lang:#E8487E; --d-space:#2D8CFF; --d-speed:#17A35E; --d-flex:#6AA613;
+  --c-red:#E5484D; --c-blue:#2D6CF6; --c-green:#16A05A; --c-yellow:#E3A008;
+  --f-display:'Bricolage Grotesque','Nunito Sans',system-ui,sans-serif;
+  --f-body:'Nunito Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --r:18px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E1120; --surface:#171B2E; --ink:#EEF0F8; --muted:#9AA1BC; --line:#272D46; --line-deep:#1C2135; --grid:#222842;
+  --accent:#FF6A48; --accent-deep:#C4401F; --ok:#22B56C; --ok-deep:#148049; --bad:#F0565B; --bad-deep:#B3363B;
+  --c-blue:#4D84FF; --c-yellow:#F2B90D; --c-green:#22B56C; --c-red:#F0565B; --d-flex:#7DBB1F;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0E1120; --surface:#171B2E; --ink:#EEF0F8; --muted:#9AA1BC; --line:#272D46; --line-deep:#1C2135; --grid:#222842;
+  --accent:#FF6A48; --accent-deep:#C4401F; --ok:#22B56C; --ok-deep:#148049; --bad:#F0565B; --bad-deep:#B3363B;
+  --c-blue:#4D84FF; --c-yellow:#F2B90D; --c-green:#22B56C; --c-red:#F0565B; --d-flex:#7DBB1F;
+  color-scheme:dark;
+}

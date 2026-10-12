@@ -1,5 +1,10 @@
 # Cambios
 
+## 0.3.0 — 2026-10-12
+- Código separado en archivos: CSS por secciones y JavaScript en módulos (un archivo por juego, por idioma y por vista).
+- Favicon como archivo propio.
+- README con la estructura del proyecto y cómo añadir un juego.
+
 ## 0.2.1 — 2026-10-12
 - El idioma se detecta según las preferencias del navegador (catalán, castellano o inglés; inglés para el resto). Si se cambia a mano, se respeta.
 - Pie de página con autor y enlace al código.

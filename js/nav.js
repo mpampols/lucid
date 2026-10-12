@@ -9,7 +9,7 @@ let view = 'home';
 export const getView = () => view;
 
 export function showView(v){
-  view=v;
+  view=v; document.body.dataset.view=v;
   const home=$('#home'), statsView=$('#stats'), play=$('#play'), chrome=$('#chrome');
   home.hidden = v!=='home'; statsView.hidden = v!=='stats'; chrome.hidden = v==='play'; $('#siteFoot').hidden = v==='play'; play.hidden = v!=='play';
   $('#tabHome').setAttribute('aria-selected', v==='home'); $('#tabStats').setAttribute('aria-selected', v==='stats');

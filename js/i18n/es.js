@@ -38,6 +38,7 @@ export default {
   restore:'Restaurar una copia', restoreHint:'Pega aquí tu copia…', restoreBtn:'Restaurar', chooseFile:'o elige un archivo .json', restored:'Datos restaurados', badBackup:'Ese texto no es una copia válida de Lúcid.',
   reset:'Borrar todo mi progreso', resetConfirm:'Se borrarán la racha, los récords y todo el historial. No se puede deshacer.', resetYes:'Sí, borrar todo', cancel:'Cancelar', resetDone:'Progreso borrado',
   emptyStats:'Aún no hay partidas. Completa el entrenamiento de hoy y aquí verás cómo evolucionas.', goTrain:'Ir a entrenar',
+  go:'¡Ya!', praise:['¡Bien!','¡Genial!','¡Imparable!','¡Brutal!','¡Leyenda!'], bestCombo:'Mejor combo',
   // sharing
   share:'Compartir', shareResult:'Compartir resultado', shareProgress:'Compartir mi progreso', shareTitle:'Compartir',
   shareNative:'Más opciones…', copyText:'Copiar texto', textCopied:'Texto copiado', downloadImg:'Descargar imagen', imgFail:'No se ha podido crear la imagen.', close:'Cerrar',

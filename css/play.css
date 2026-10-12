@@ -1,5 +1,5 @@
 /* ---------- play ---------- */
-#play{flex:1;display:flex;flex-direction:column;min-height:calc(100vh - 40px)}
+#play{flex:1;display:flex;flex-direction:column;min-height:calc(100vh - 40px);min-height:calc(100dvh - 40px)}
 .play-top{display:flex;align-items:center;gap:12px;padding-block:6px 10px}
 .track{flex:1;height:16px;border-radius:99px;background:var(--line);overflow:hidden}
 .fill{height:100%;width:100%;border-radius:99px;background:var(--accent);box-shadow:inset 0 -4px 0 rgba(0,0,0,.12)}
@@ -7,7 +7,7 @@
 .hud{display:flex;align-items:center;gap:6px;font:800 1.1rem var(--f-display);font-variant-numeric:tabular-nums;min-width:56px;justify-content:flex-end}
 .hearts{display:flex;gap:3px;color:var(--bad)}
 .hearts .lost{color:var(--line)}
-.stage{flex:1;display:flex;flex-direction:column;position:relative;gap:14px;padding-block:6px}
+.stage{flex:1;display:flex;flex-direction:column;position:relative;gap:14px;padding-block:6px;-webkit-user-select:none;user-select:none}
 .mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;min-height:200px}
 .hint{font-weight:800;color:var(--muted);font-size:.95rem}
 
@@ -36,3 +36,47 @@
 .sum-list b{font:800 1.1rem var(--f-display);font-variant-numeric:tabular-nums}
 .big-flame{color:var(--accent);animation:pop .4s ease-out}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:5}
+
+/* ---------- countdown ---------- */
+.countdown{flex:1;display:grid;place-items:center;min-height:240px}
+#cd{font:800 clamp(6rem,32vw,10rem) var(--f-display);color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+#cd.go{color:var(--ok);font-size:clamp(3.5rem,18vw,6rem)}
+#cd.in{animation:cdin .5s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes cdin{0%{transform:scale(1.8);opacity:0}45%{opacity:1}100%{transform:scale(1);opacity:1}}
+
+/* ---------- HUD ---------- */
+.hud-score{display:inline-block;min-width:2ch;text-align:right}
+.hud-score.pop{animation:hudpop .3s ease-out}
+@keyframes hudpop{40%{transform:scale(1.3);color:var(--ok)}}
+.combo{display:inline-flex;align-items:center;gap:2px;padding:2px 9px 2px 7px;border-radius:99px;background:var(--accent);color:var(--on-accent);font:800 .85rem var(--f-body)}
+.combo.pop{animation:combopop .3s cubic-bezier(.3,1.6,.5,1)}
+@keyframes combopop{0%{transform:scale(.6)}100%{transform:scale(1)}}
+.hearts svg.break{animation:heartbreak .5s ease-out}
+@keyframes heartbreak{0%{transform:scale(1.4);color:var(--bad)}30%{transform:scale(1.4) rotate(-12deg)}60%{transform:rotate(10deg)}100%{transform:none}}
+.track.urgent{animation:urgent .5s ease-in-out infinite alternate}
+@keyframes urgent{to{transform:scaleY(1.35)}}
+
+/* in-game praise ("Great!") */
+.burst{position:absolute;left:50%;top:20%;transform:translate(-50%,-50%);font:800 clamp(2rem,10vw,3rem) var(--f-display);color:var(--accent);white-space:nowrap;pointer-events:none;z-index:2;text-shadow:0 3px 0 var(--surface);animation:burst .9s ease-out forwards}
+@keyframes burst{0%{transform:translate(-50%,-50%) scale(.4) rotate(-8deg);opacity:0}25%{transform:translate(-50%,-50%) scale(1.15) rotate(3deg);opacity:1}60%{transform:translate(-50%,-50%) scale(1);opacity:1}100%{transform:translate(-50%,-90%) scale(1);opacity:0}}
+
+/* screen-edge glow on right/wrong answers */
+#fx{position:fixed;inset:0;pointer-events:none;z-index:4}
+#fx.fx-good{animation:glowgood .45s ease-out}
+#fx.fx-bad{animation:glowbad .5s ease-out}
+@keyframes glowgood{0%{box-shadow:inset 0 0 0 0 transparent}30%{box-shadow:inset 0 0 50px 4px color-mix(in oklab,var(--ok) 45%,transparent)}100%{box-shadow:inset 0 0 0 0 transparent}}
+@keyframes glowbad{0%{box-shadow:inset 0 0 0 0 transparent}30%{box-shadow:inset 0 0 60px 8px color-mix(in oklab,var(--bad) 50%,transparent)}100%{box-shadow:inset 0 0 0 0 transparent}}
+
+/* ---------- result & summary motion ---------- */
+.score-big.land{animation:land .4s cubic-bezier(.3,1.6,.5,1)}
+@keyframes land{0%{transform:scale(1.15)}100%{transform:scale(1)}}
+.badge.pop{animation:badgepop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes badgepop{0%{transform:scale(0)}100%{transform:scale(1)}}
+.result .res-stats div{animation:fadeup .35s ease-out both}
+.result .res-stats div:nth-child(2){animation-delay:.08s}
+.result .res-stats div:nth-child(3){animation-delay:.16s}
+.res-stats{flex-wrap:wrap;justify-content:center}
+.summary.animate .sum-list li{animation:fadeup .35s cubic-bezier(.3,1.4,.5,1) both;animation-delay:calc(350ms + var(--i) * 220ms)}
+.summary.animate .big-flame{animation:flame 1.4s ease-in-out .2s infinite alternate}
+@keyframes fadeup{0%{transform:translateY(14px) scale(.96);opacity:0}100%{transform:none;opacity:1}}
+@keyframes flame{from{transform:scale(1) rotate(-3deg)}to{transform:scale(1.08) rotate(3deg)}}

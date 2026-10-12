@@ -26,7 +26,7 @@ Lúcid is a daily brain-training web app. Every day it suggests four short exerc
 - **Progress**: activity heatmap, score history per game, personal bests, trend and games per area.
 - **Sharing**: a Wordle-style summary of the day (one row of squares per game, rated against your own best, without revealing the scores), image cards for social media, and challenge links: whoever opens yours is challenged to beat your score in that day's training.
 - **Three languages**: Spanish, Catalan and English. Picked automatically from the browser language and can be changed manually.
-- Light and dark mode, optional sounds and keyboard controls.
+- Light and dark mode, sounds and small animations (countdown, combos, praise, count-ups), keyboard controls, and layouts for phones in portrait and landscape.
 
 ## How it works
 
@@ -49,6 +49,7 @@ css/
   play.css            Game shell: timer bar, intro and results
   games.css           Game-specific styles
   share.css           Share sheet and challenge banner
+  responsive.css      Small phones and landscape layout
   animations.css      Animations and reduced motion
 js/
   main.js             Entry point and global events
@@ -60,6 +61,7 @@ js/
   sound.js            Sound effects
   icons.js            SVG icons
   confetti.js         Confetti
+  fx.js               Feedback effects: glow, haptics, count-up, praise
   share.js            Share texts, share sheet and challenge links
   share-cards.js      Image cards drawn on a canvas
   config.js           Public URL and day numbering

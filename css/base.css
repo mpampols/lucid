@@ -13,7 +13,7 @@ p{margin:0}
 .muted{color:var(--muted)}
 .eyebrow{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 
-#app{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:10px 28px;min-height:100%;display:flex;flex-direction:column}
+#app{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px 28px;min-height:100%;display:flex;flex-direction:column}
 
 /* ---------- top bar + tabs ---------- */
 .topbar{display:flex;align-items:center;gap:8px;padding-block:6px 12px}
@@ -31,7 +31,9 @@ p{margin:0}
 
 /* ---------- buttons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:15px 22px;font:800 1.05rem var(--f-display);letter-spacing:.01em;background:var(--accent);color:var(--on-accent);box-shadow:0 5px 0 var(--accent-deep);transition:transform .06s, box-shadow .06s, filter .15s;margin-bottom:5px}
-.btn:hover{filter:brightness(1.05)}
+@media (hover:hover){ .btn:hover{filter:brightness(1.05)} }
+/* touch: no double-tap zoom or text selection on controls */
+button,.btn,.key,.choice,.tile,.cell,.opt,.chip,.tab,.share-chip{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .btn:active{transform:translateY(5px);box-shadow:0 0 0 var(--accent-deep)}
 .btn.ghost{background:var(--surface);color:var(--ink);border:2px solid var(--line);box-shadow:0 5px 0 var(--line)}
 .btn.ghost:active{box-shadow:0 0 0 var(--line)}

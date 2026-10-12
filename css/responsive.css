@@ -1,0 +1,48 @@
+/* Layout adjustments for small phones and landscape. Loaded after the game styles so it can override them. */
+/* ---------- small phones (portrait) ---------- */
+@media (max-height:680px) and (orientation:portrait){
+  .mid{gap:12px;min-height:160px}
+  .key{height:50px}
+  .flash-digit{font-size:5.5rem}
+  .intro .tile-ic{width:68px;height:68px;border-radius:22px}
+  .intro h2{font-size:1.8rem}
+}
+
+/* ---------- phones in landscape: two columns (content | controls) ---------- */
+@media (orientation:landscape) and (max-height:560px){
+  body[data-view="play"] #app{max-width:940px;padding-block:4px 10px}
+  #play{min-height:calc(100vh - 14px);min-height:calc(100dvh - 14px)}
+  .play-top{padding-block:4px 6px}
+  .stage{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:1fr;align-items:center;column-gap:24px;row-gap:10px}
+  .stage > *{grid-row:1}
+  .stage > .mid,.stage > .intro,.stage > .result{grid-column:1}
+  .stage > .keypad,.stage > .choices,.stage > .row2,.stage > .btn,.stage > .btn-row,.stage > .intro-cta{grid-column:2}
+  .stage > .countdown,.stage[data-game="grid"] > .mid,.stage[data-game="compare"] > .mid{grid-column:1 / -1}
+  .mid{min-height:0;gap:10px}
+  .prompt{font-size:clamp(2.2rem,8vh,3.4rem)}
+  .answer{font-size:2rem;padding:2px 14px}
+  .key{height:clamp(40px,13vh,54px);font-size:1.3rem}
+  .keypad{gap:8px}
+  .choice{min-height:clamp(48px,16vh,64px)}
+  .flash-digit{font-size:clamp(3.5rem,20vh,6rem)}
+  .slot{height:44px}
+  .opt{min-height:clamp(90px,30vh,150px)}
+  .nb-card{width:clamp(90px,30vh,150px);height:clamp(90px,30vh,150px);font-size:clamp(3rem,16vh,5.4rem)}
+  .rule-card{padding:10px 14px 14px}
+  .rule-num{font-size:clamp(3rem,18vh,6rem)}
+  .shapes{width:min(100%,82vh)}
+  .stroop-word{font-size:clamp(2.4rem,12vh,4.6rem)}
+  .intro{padding-block:6px;gap:8px}
+  .intro .tile-ic{width:60px;height:60px;border-radius:20px;margin-bottom:0}
+  .intro .tile-ic svg{width:30px;height:30px}
+  .intro h2{font-size:1.7rem}
+  .intro p{font-size:.98rem}
+  .result{padding-block:6px;gap:6px}
+  .score-big{font-size:clamp(3rem,18vh,5rem)}
+  .big-flame{display:none}
+  .res-stats{margin:6px 0}
+  .countdown{min-height:0}
+  #cd{font-size:clamp(5rem,40vh,9rem)}
+  .burst{left:28%;top:30%}
+  .grid{width:min(100%,56vh)}
+}

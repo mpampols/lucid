@@ -22,7 +22,7 @@
 @media (min-width:560px){ .games{grid-template-columns:repeat(3,minmax(0,1fr))} }
 @media (max-width:559px){ .game:last-child:nth-child(odd){grid-column:span 2} }
 .game{display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;padding:16px;border-radius:var(--r);background:var(--surface);border:2px solid var(--line);border-bottom-width:5px;transition:transform .06s,border-color .15s;min-width:0}
-.game:hover{border-color:var(--line-deep)}
+@media (hover:hover){ .game:hover{border-color:var(--line-deep)} }
 .game:active{transform:translateY(3px);border-bottom-width:2px;margin-bottom:3px}
 .tile-ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--dc);color:#fff;box-shadow:0 4px 0 color-mix(in oklab,var(--dc) 70%,#000);flex:none}
 .game h4{margin:2px 0 0;font:800 1.05rem var(--f-display);letter-spacing:-.01em}
@@ -30,5 +30,14 @@
 .game .best{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .new{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:99px;background:var(--accent);color:var(--on-accent);font:800 .62rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;vertical-align:3px}
 .foot{margin-top:32px;font-size:.85rem;color:var(--muted);text-align:center;text-wrap:balance;display:grid;gap:6px}
-.foot a{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-color:var(--line-deep);text-underline-offset:3px}
+.foot .credit{font-size:.78rem;opacity:.8}
+.foot a{color:inherit;font-weight:inherit;text-decoration:underline;text-decoration-color:var(--line-deep);text-underline-offset:3px}
 .foot a:hover{text-decoration-color:var(--accent)}
+
+/* daily path: progress line and freshly completed node */
+.path-fill{position:absolute;left:12.5%;top:29px;height:4px;border-radius:4px;background:var(--ok);width:var(--to);list-style:none;animation:pathgrow .7s .1s ease-out both}
+@keyframes pathgrow{from{width:var(--from)}to{width:var(--to)}}
+.node.just{animation:nodedone .55s .1s ease-out both}
+.node.just .check{animation:checkpop .45s .4s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes nodedone{0%{transform:scale(.85);filter:saturate(.3)}60%{transform:scale(1.12)}100%{transform:scale(1);filter:none}}
+@keyframes checkpop{0%{transform:scale(0) rotate(-30deg)}100%{transform:scale(1) rotate(0)}}

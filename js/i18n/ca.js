@@ -36,6 +36,7 @@ export default {
   restore:'Restaurar una còpia', restoreHint:'Enganxa aquí la teva còpia…', restoreBtn:'Restaurar', chooseFile:'o tria un fitxer .json', restored:'Dades restaurades', badBackup:'Aquest text no és una còpia vàlida de Lúcid.',
   reset:'Esborrar tot el meu progrés', resetConfirm:"S'esborraran la ratxa, els rècords i tot l'historial. No es pot desfer.", resetYes:'Sí, esborrar-ho tot', cancel:'Cancel·lar', resetDone:'Progrés esborrat',
   emptyStats:"Encara no hi ha partides. Completa l'entrenament d'avui i aquí veuràs com evolucionas.", goTrain:'Anar a entrenar',
+  go:'Som-hi!', praise:['Molt bé!','Genial!','Imparable!','Brutal!','Llegenda!'], bestCombo:'Millor combo',
   // sharing
   share:'Compartir', shareResult:'Compartir el resultat', shareProgress:'Compartir el meu progrés', shareTitle:'Compartir',
   shareNative:'Més opcions…', copyText:'Copiar el text', textCopied:'Text copiat', downloadImg:'Descarregar la imatge', imgFail:"No s'ha pogut crear la imatge.", close:'Tancar',

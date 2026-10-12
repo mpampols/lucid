@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0 — 2026-10-12
+- 3 · 2 · 1 · Go! countdown before each game.
+- Combos: answers in a row climb in pitch, show a ×N badge and trigger praise ("Great!", "Unstoppable!") every 5.
+- Screen-edge glow and vibration (where supported) on right and wrong answers; animated score, breaking hearts and a pulsing timer in the last seconds.
+- Results count up with ticks; new bests get their own fanfare. The daily summary reveals each game one by one.
+- The daily path on the home screen fills up and the finished game's check mark pops in.
+- Mobile: two-column game layout in landscape, tighter layout on small phones, safe-area support, no double-tap zoom or text selection on controls.
+- Quieter footer credit.
+
 ## 0.4.0 — 2026-10-12
 - Share the daily result: Wordle-style text with a 1–5 rating per game against your own best, plus a title based on how the day went.
 - Image cards (1080×1350) for the daily result and for overall progress.

@@ -36,6 +36,7 @@ export default {
   restore:'Restore a backup', restoreHint:'Paste your backup here…', restoreBtn:'Restore', chooseFile:'or choose a .json file', restored:'Data restored', badBackup:"That text isn't a valid Lúcid backup.",
   reset:'Delete all my progress', resetConfirm:'This deletes your streak, bests and full history. It cannot be undone.', resetYes:'Yes, delete everything', cancel:'Cancel', resetDone:'Progress deleted',
   emptyStats:"No games yet. Complete today's training and your progress will show up here.", goTrain:'Go train',
+  go:'Go!', praise:['Nice!','Great!','Unstoppable!','On fire!','Legendary!'], bestCombo:'Best combo',
   // sharing
   share:'Share', shareResult:'Share result', shareProgress:'Share my progress', shareTitle:'Share',
   shareNative:'More options…', copyText:'Copy text', textCopied:'Text copied', downloadImg:'Download image', imgFail:"Couldn't create the image.", close:'Close',

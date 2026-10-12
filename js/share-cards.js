@@ -139,3 +139,31 @@ export async function drawProgressCard(p){
   footer(x, p.best?`${L.bestStreakLbl}: ${p.best}`:null);
   return toBlob(c);
 }
+
+// ---------- mental check-up card ----------
+export async function drawCheckCard(c){
+  await ready();
+  const L=t(), C=L.check, [cv,x]=canvas();
+  header(x,new Date(c.t).toLocaleDateString(L.locale,{day:'numeric',month:'short',year:'numeric'}).replace('.',''));
+  text(x,C.shareTitle,PAD,290,{font:`800 84px ${DISPLAY}`,max:W-2*PAD});
+  const pct=`${c.pct}%`;
+  text(x,pct,PAD,560,{font:`800 260px ${DISPLAY}`,color:C_ACCENT});
+  // sentence, wrapped to two lines max
+  const sentence=C.shareText(c.pct);
+  x.font=`700 44px ${BODY}`;
+  const words=sentence.split(' '), lines=[]; let line='';
+  words.forEach(w=>{ const tryL=line?line+' '+w:w; if(x.measureText(tryL).width>W-2*PAD){ lines.push(line); line=w; } else line=tryL; });
+  if(line) lines.push(line);
+  lines.slice(0,3).forEach((l,i)=>text(x,l,PAD,660+i*60,{font:`700 44px ${BODY}`,color:'#EEF0F8'}));
+  const tiles=[[String(c.corsi),C.cardSpatial],[String(c.digits),C.cardDigits],[`${c.rt} ms`,C.cardRt]];
+  const tw=(W-2*PAD-2*24)/3, ty=870;
+  tiles.forEach(([v,lbl],i)=>{
+    const X=PAD+i*(tw+24);
+    rrect(x,X,ty,tw,190,30,'#171B2E');
+    text(x,v,X+30,ty+105,{font:`800 76px ${DISPLAY}`,max:tw-60});
+    text(x,lbl,X+30,ty+152,{font:`700 30px ${BODY}`,color:'#9AA1BC',max:tw-60});
+  });
+  footer(x,null);
+  return toBlob(cv);
+}
+const C_ACCENT='#FF6A48';

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.0 — 2026-10-12
+- Mental check-up: a 3-minute test with spatial span (Corsi blocks), digit span and reaction time.
+- Spatial span is compared with people of the same age and education using published normative data, with a percentile and a chart of the average by age.
+- Check-up card on the home screen (before the daily training until the first check-up), history in Progress, shareable result and image card, and a `#check` link that opens it directly.
+
 ## 0.5.0 — 2026-10-12
 - 3 · 2 · 1 · Go! countdown before each game.
 - Combos: answers in a row climb in pitch, show a ×N badge and trigger praise ("Great!", "Unstoppable!") every 5.

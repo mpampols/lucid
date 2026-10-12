@@ -7,6 +7,7 @@ import { currentStreak } from '../daily.js';
 import { goHome } from '../nav.js';
 import { renderTop } from './topbar.js';
 import { shareProgress } from '../share.js';
+import { checkHistoryHTML } from '../check.js';
 
 const statsView = $('#stats');
 
@@ -38,7 +39,7 @@ export function renderStats(){
     statsView.innerHTML = `<div class="prog"><div class="card empty-prog">
       <span class="tile-ic" style="--dc:var(--accent)">${tabIcons.stats}</span>
       <h2>${L.progTitle}</h2><p>${L.emptyStats}</p>
-      <button class="btn" id="goTrain">${L.goTrain}</button></div>${dataCardHTML()}</div>`;
+      <button class="btn" id="goTrain">${L.goTrain}</button></div>${checkHistoryHTML()}${dataCardHTML()}</div>`;
     $('#goTrain').onclick=goHome; bindDataCard(); return;
   }
   // default selected game: the last one played
@@ -86,6 +87,7 @@ export function renderStats(){
       <div class="bars">${domainBarsHTML()}</div>
     </section>
 
+    ${checkHistoryHTML()}
     ${dataCardHTML()}
   </div>`;
 

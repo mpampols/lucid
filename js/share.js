@@ -5,7 +5,7 @@ import { $, dayKey, fmtN, toast, esc } from './utils.js';
 import { GAMES, DOMAINS } from './games/index.js';
 import { getDay, currentStreak } from './daily.js';
 import { SITE_URL, LAUNCH_DAY } from './config.js';
-import { drawDailyCard, drawProgressCard } from './share-cards.js';
+import { drawDailyCard, drawProgressCard, drawCheckCard } from './share-cards.js';
 
 // ---------- daily numbering ----------
 export function dayNumber(key = dayKey()){
@@ -82,6 +82,12 @@ export function shareDaily(){
 export function shareProgress(){
   const p=progressData();
   openShareSheet({ text:progressText(p), url:SITE_URL, filename:'lucid-progress.png', draw:()=>drawProgressCard(p) });
+}
+
+export function shareCheck(c){
+  const C=t().check, url=SITE_URL+'#check';
+  const text=[`🧠 ${C.shareTitle}`, C.shareText(c.pct), `🔢 ${C.digitsName}: ${c.digits} · ⚡ ${C.rtName}: ${c.rt} ms`, `${C.shareAsk} ${url}`].join('\n');
+  openShareSheet({ text, url, filename:'lucid-check.png', draw:()=>drawCheckCard(c) });
 }
 
 // ---------- share sheet ----------

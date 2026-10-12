@@ -6,6 +6,7 @@ import { T, detectLang } from './i18n/index.js';
    when there is a backend, only this module needs to change.
    Schema v2:
    { v, lang, langChosen, sound,
+     profile:{age, edu}, checks:[ {t, age, edu, corsi, digits, rt, pct} ],
      best:{gameId:score},
      streak:{count,last,best},
      days:{ 'YYYY-MM-DD': {plan:[ids], games:{id:score}, done, total} },
@@ -13,7 +14,7 @@ import { T, detectLang } from './i18n/index.js';
    ========================================================= */
 export const Store = {
   KEY:'lucid.v2', LEGACY:'lucid.v1', MAX_HISTORY:5000,
-  defaults(){ return {v:2, lang:detectLang(), langChosen:false, sound:true, best:{}, streak:{count:0,last:null,best:0}, days:{}, history:[]}; },
+  defaults(){ return {v:2, profile:null, checks:[], lang:detectLang(), langChosen:false, sound:true, best:{}, streak:{count:0,last:null,best:0}, days:{}, history:[]}; },
   normalize(o){
     const d=this.defaults(), s=Object.assign(d, o||{});
     s.v=2; s.best=s.best||{}; s.days=s.days||{}; s.history=Array.isArray(s.history)?s.history:[];

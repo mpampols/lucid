@@ -1,6 +1,7 @@
 // Navigation between views: home, progress and play
 import { $ } from './utils.js';
 import { leaveRun } from './engine.js';
+import { leaveCheck } from './check.js';
 import { renderTop } from './views/topbar.js';
 import { renderHome } from './views/home.js';
 import { renderStats } from './views/progress.js';
@@ -16,5 +17,5 @@ export function showView(v){
   window.scrollTo(0,0);
 }
 
-export function goHome(){ leaveRun(); renderTop(); renderHome(); showView('home'); }
-export function goStats(){ leaveRun(); renderTop(); renderStats(); showView('stats'); }
+export function goHome(){ leaveRun(); leaveCheck(); renderTop(); renderHome(); showView('home'); }
+export function goStats(){ leaveRun(); leaveCheck(); renderTop(); renderStats(); showView('stats'); }

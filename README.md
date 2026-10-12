@@ -23,6 +23,7 @@ Lúcid is a daily brain-training web app. Every day it suggests four short exerc
   | Echo | Memory | Working memory (n-back) |
   | Mirror | Spatial | Mental rotation |
 
+- **Mental check-up** (3 minutes): standard spatial span (Corsi blocks), digit span and reaction time tests. Spatial span is compared with people of the same age and education using published norms; the other two are shown against classic references. Results can be shared and repeated over time.
 - **Progress**: activity heatmap, score history per game, personal bests, trend and games per area.
 - **Sharing**: a Wordle-style summary of the day (one row of squares per game, rated against your own best, without revealing the scores), image cards for social media, and challenge links: whoever opens yours is challenged to beat your score in that day's training.
 - **Three languages**: Spanish, Catalan and English. Picked automatically from the browser language and can be changed manually.
@@ -49,6 +50,7 @@ css/
   play.css            Game shell: timer bar, intro and results
   games.css           Game-specific styles
   share.css           Share sheet and challenge banner
+  check.css           Mental check-up
   responsive.css      Small phones and landscape layout
   animations.css      Animations and reduced motion
 js/
@@ -61,6 +63,8 @@ js/
   sound.js            Sound effects
   icons.js            SVG icons
   confetti.js         Confetti
+  check.js            Mental check-up (tests, results, age chart)
+  norms.js            Reference data and percentile maths
   fx.js               Feedback effects: glow, haptics, count-up, praise
   share.js            Share texts, share sheet and challenge links
   share-cards.js      Image cards drawn on a canvas
@@ -101,6 +105,14 @@ python3 -m http.server 8000
 ## A note on the science
 
 The exercises are based on classic cognitive psychology tasks (Stroop, n-back, Corsi blocks, mental rotation, task switching). Even so, the evidence that brain training improves abilities beyond the games themselves is limited. Lúcid doesn't promise miracles: the goal is to keep the habit of making a small mental effort every day.
+
+### References used by the check-up
+
+- Spatial span percentile: [Regression-based normative data for Corsi Span and Supraspan learning and recall among Italian adults](https://pmc.ncbi.nlm.nih.gov/articles/PMC11554723/) (N = 340, ages 21–89). Expected span = 4.97 − 0.7616·(ln age − 3.864) + 0.4229·(√years of education − 3.555), residual SD ≈ 0.90.
+- Reaction time context: Der & Deary (2006), UK Health and Lifestyle Survey (N = 7,130), as summarised in [Woodley et al. (2015)](https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2015.00452/full).
+- Digit span context: Miller, G. A. (1956), *The magical number seven, plus or minus two*.
+
+These comparisons are indicative only: the reference samples, devices and procedures differ from a phone or browser.
 
 ## Author
 

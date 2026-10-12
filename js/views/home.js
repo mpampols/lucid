@@ -6,6 +6,7 @@ import { shareDaily, challengeBanner, dayNumber } from '../share.js';
 import { GAMES, ORDER } from '../games/index.js';
 import { getDay, currentStreak } from '../daily.js';
 import { openGame, openSummary, takeJustCompleted } from '../engine.js';
+import { openCheck, checkCardHTML } from '../check.js';
 
 const home = $('#home');
 
@@ -16,11 +17,13 @@ export function renderHome(){
   const trained=Object.values(S.days).filter(d=>d.done).length;
   const date=new Date().toLocaleDateString(L.locale,{weekday:'long',day:'numeric',month:'long'});
   const n=currentStreak(), banner=challengeBanner(), just=takeJustCompleted();
+  const firstCheck=!(S.checks&&S.checks.length);
   // progress line between the path nodes; animates from the previous step after finishing a game
   const seg=k=>plan.length>1?Math.max(0,k-1)/(plan.length-1)*75:0;
   const fillTo=seg(done), fillFrom=just?seg(done-1):fillTo;
   home.innerHTML = `
     <p class="lede">${L.tagline}</p>
+    ${firstCheck?checkCardHTML():''}
     <section class="daily" aria-labelledby="dt">
       <div>
         <div class="eyebrow">${date} · #${dayNumber()}</div>
@@ -39,6 +42,7 @@ export function renderHome(){
       <span><b>${fmtN(todayPts)}</b> ${L.todayPts}</span>
       <span>${L.trained(trained).replace(/^(\d+)/,'<b>$1</b>')}</span>
     </div>
+    ${firstCheck?'':checkCardHTML()}
     <div class="sec-head"><h3>${L.allGames}</h3><p class="muted">${L.allSub}</p></div>
     <div class="games">
       ${ORDER.map(id=>{ const g=GAMES[id], b=S.best[id];
@@ -50,6 +54,7 @@ export function renderHome(){
     </div>
 `;
   if(just && S.sound) setTimeout(()=>sfx.pop(), 450);
+  $('#checkBtn').onclick=()=>{ sfx.tap(); openCheck(); };
   const sb=$('#shareBtn'); if(sb) sb.onclick=()=>{ sfx.tap(); shareDaily(); };
   $('#dailyBtn').onclick = ()=>{ sfx.tap(); if(day.done) openSummary(false); else openGame(nextId,true); };
   home.querySelectorAll('.game').forEach(b=>b.onclick=()=>{ sfx.tap(); openGame(b.dataset.g,false); });

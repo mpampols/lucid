@@ -8,6 +8,7 @@ import { renderTop } from './views/topbar.js';
 import { renderHome } from './views/home.js';
 import { renderStats, drawLine } from './views/progress.js';
 import { captureChallenge } from './share.js';
+import { openCheck } from './check.js';
 
 // ---------- global events ----------
 $('#lang').onchange=e=>{ S.lang=e.target.value; S.langChosen=true; save(); renderTop(); if(getView()==='stats') renderStats(); else renderHome(); };
@@ -22,4 +23,4 @@ let rz; addEventListener('resize',()=>{ clearTimeout(rz); rz=setTimeout(()=>{ if
 captureChallenge();
 renderTop();
 if(location.hash==='#progreso' || location.hash==='#stats'){ renderStats(); showView('stats'); }
-else { renderHome(); showView('home'); }
+else { renderHome(); showView('home'); if(location.hash==='#check') openCheck(); }

@@ -2,7 +2,7 @@ import { $, pick, shuffle } from '../utils.js';
 import { sfx } from '../sound.js';
 import { bump, pressFx } from './shared.js';
 
-// 8) Eco — n-back adaptativo
+// Echo — adaptive n-back
 export function initNback(st, api){
   const L=api.t(), pool=shuffle('BCDFGHKLMNPRST'.split('')).slice(0,7);
   let n=1, seq=[], responded=false, hitsRow=0, errs=0, pendingN=null;
@@ -16,7 +16,7 @@ export function initNback(st, api){
     let x; do{ x=pick(pool); } while(seq.length>=n && x===seq[seq.length-n]); return x;
   }
   function step(){
-    // cerrar el estímulo anterior: si era coincidencia y no se pulsó, es un fallo
+    // close the previous stimulus: a match that wasn't tapped counts as a miss
     if(isMatch() && !responded){ nt.textContent=L.nbackMiss; card.className='nb-card bad'; api.wrong(); errs++; hitsRow=0; if(errs>=3 && n>1){ pendingN=n-1; } }
     else nt.textContent='';
     if(pendingN){ n=pendingN; pendingN=null; seq=[]; errs=0; hitsRow=0; level(); }

@@ -1,7 +1,7 @@
-// Piezas comunes a varios juegos
+// Pieces shared by several games
 import { t } from '../state.js';
 
-// ---------- teclado numérico ----------
+// ---------- number keypad ----------
 export function keypadHTML(){
   return `<div class="keypad">${[1,2,3,4,5,6,7,8,9].map(n=>`<button class="key" data-k="${n}">${n}</button>`).join('')}
     <span class="key key-space" aria-hidden="true"></span>

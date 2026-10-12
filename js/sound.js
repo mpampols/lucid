@@ -1,6 +1,6 @@
 import { S } from './state.js';
 
-// ---------- sonido (WebAudio, sin archivos) ----------
+// ---------- sound (Web Audio, no audio files) ----------
 export const sfx = {
   ctx:null,
   get(){ if(!S.sound) return null; try{ if(!this.ctx){ const C=window.AudioContext||window.webkitAudioContext; if(!C) return null; this.ctx=new C(); } if(this.ctx.state==='suspended') this.ctx.resume(); }catch(e){ return null; } return this.ctx; },

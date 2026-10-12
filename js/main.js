@@ -1,4 +1,4 @@
-// Punto de entrada
+// Entry point
 import { S, save } from './state.js';
 import { $ } from './utils.js';
 import { sfx } from './sound.js';
@@ -8,7 +8,7 @@ import { renderTop } from './views/topbar.js';
 import { renderHome } from './views/home.js';
 import { renderStats, drawLine } from './views/progress.js';
 
-// ---------- eventos globales ----------
+// ---------- global events ----------
 $('#lang').onchange=e=>{ S.lang=e.target.value; S.langChosen=true; save(); renderTop(); if(getView()==='stats') renderStats(); else renderHome(); };
 $('#soundBtn').onclick=()=>{ S.sound=!S.sound; save(); renderTop(); if(S.sound) sfx.tap(); };
 $('#tabHome').onclick=()=>{ sfx.tap(); goHome(); };

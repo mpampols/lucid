@@ -1,15 +1,15 @@
 import { T, detectLang } from './i18n/index.js';
 
 /* =========================================================
-   Almacenamiento
-   Toda la persistencia pasa por Store. Hoy usa localStorage;
-   el día que haya backend, solo cambia este módulo.
-   Esquema v2:
-   { v, lang, sound,
+   Storage
+   All persistence goes through Store. It uses localStorage today;
+   when there is a backend, only this module needs to change.
+   Schema v2:
+   { v, lang, langChosen, sound,
      best:{gameId:score},
      streak:{count,last,best},
      days:{ 'YYYY-MM-DD': {plan:[ids], games:{id:score}, done, total} },
-     history:[ {t, d, g, s, c, w, daily} ] }   // una entrada por partida
+     history:[ {t, d, g, s, c, w, daily} ] }   // one entry per game played
    ========================================================= */
 export const Store = {
   KEY:'lucid.v2', LEGACY:'lucid.v1', MAX_HISTORY:5000,
@@ -19,13 +19,13 @@ export const Store = {
     s.v=2; s.best=s.best||{}; s.days=s.days||{}; s.history=Array.isArray(s.history)?s.history:[];
     s.streak=Object.assign({count:0,last:null,best:0}, s.streak||{});
     s.streak.best=Math.max(s.streak.best||0, s.streak.count||0);
-    // Mientras el usuario no elija idioma a mano, se sigue el del navegador
+    // Follow the browser language until the user picks one manually
     if(!s.langChosen || !T[s.lang]) s.lang=detectLang();
     return s;
   },
   migrateV1(o){
     const s=this.normalize(o);
-    // Reconstruye el historial a partir de los días guardados en v1
+    // Rebuild the history from the days stored in v1
     Object.entries(s.days).forEach(([d,day])=>{
       Object.entries(day.games||{}).forEach(([g,score])=>{
         s.history.push({t:new Date(d+'T12:00:00').getTime(), d, g, s:score, c:null, w:null, daily:true});

@@ -2,7 +2,7 @@ import { $, ri } from '../utils.js';
 import { sfx } from '../sound.js';
 import { keypadHTML, bindKeypad, bump } from './shared.js';
 
-// 3) Dígitos — amplitud de dígitos
+// Digits — digit span
 export function initDigits(st, api){
   const L=api.t(); let len=3, seq=[], input=[], phase='show', fails=0;
   st.innerHTML = `<div class="mid"><div class="hint" id="h"></div><div class="flash-digit" id="d"></div><div class="slots" id="s"></div></div>${keypadHTML()}`;

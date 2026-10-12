@@ -10,7 +10,7 @@ import { renderTop } from './topbar.js';
 const statsView = $('#stats');
 
 /* =========================================================
-   Progreso
+   Progress view
    ========================================================= */
 let statsGame=null, statsUI={restore:false, confirm:false};
 
@@ -40,7 +40,7 @@ export function renderStats(){
       <button class="btn" id="goTrain">${L.goTrain}</button></div>${dataCardHTML()}</div>`;
     $('#goTrain').onclick=goHome; bindDataCard(); return;
   }
-  // juego seleccionado por defecto: el último jugado
+  // default selected game: the last one played
   if(!statsGame || !GAMES[statsGame]) statsGame=H[H.length-1].g;
 
   statsView.innerHTML = `<div class="prog">
@@ -91,12 +91,12 @@ export function renderStats(){
   bindHeatTips(); drawLine(); bindDataCard();
 }
 
-// --- mapa de actividad ---
+// --- activity heatmap ---
 function heatHTML(){
   const L=t(), counts={};
   S.history.forEach(e=>{ counts[e.d]=(counts[e.d]||0)+1; });
   const today=new Date(); today.setHours(12,0,0,0);
-  const dow=(today.getDay()+6)%7; // lunes = 0
+  const dow=(today.getDay()+6)%7; // Monday = 0
   const start=new Date(today); start.setDate(today.getDate()-dow-15*7);
   const tk=dayKey(today);
   let html='<span></span>', prevMonth=-1, lastLbl=-9;
@@ -136,7 +136,7 @@ function bindHeatTips(){
   });
 }
 
-// --- evolución por juego ---
+// --- progress chart per game ---
 function niceStep(x){ const p=Math.pow(10,Math.floor(Math.log10(x))), f=x/p; return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*p; }
 export function drawLine(){
   const box=$('#lineBox'), foot=$('#lineFoot'); if(!box) return;
@@ -185,7 +185,7 @@ export function drawLine(){
   foot.innerHTML = `<span>${L.lastPlay}: <b>${fmtN(lp.s)}</b></span><span>${L.avg5}: <b>${fmtN(st.avg5)}</b></span><span>${L.record}: <b>${fmtN(st.best)}</b></span><span>${L.trendLbl}: ${trendHTML(st.trend)}</span>`;
 }
 
-// --- reparto por área ---
+// --- games per area ---
 function domainBarsHTML(){
   const L=t(), c={}; DOMAINS.forEach(d=>c[d]=0);
   S.history.forEach(e=>{ const g=GAMES[e.g]; if(g) c[g.domain]++; });
@@ -193,7 +193,7 @@ function domainBarsHTML(){
   return DOMAINS.slice().sort((a,b)=>c[b]-c[a]).map(d=>`<div class="bar-row"><span class="bn">${L.domains[d]}</span><span class="bar-track bar-base">${c[d]?`<span class="bar-fill" style="width:${c[d]/max*100}%"></span>`:''}</span><span class="bv">${c[d]}</span></div>`).join('');
 }
 
-// --- tus datos ---
+// --- your data (backup, restore, reset) ---
 function dataCardHTML(){
   const L=t();
   return `<section class="card" id="dataCard">

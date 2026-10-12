@@ -1,6 +1,6 @@
 import { $, pick } from './utils.js';
 
-// ---------- confeti ----------
+// ---------- confetti ----------
 export function confetti(n){
   if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const c=$('#confetti'), x=c.getContext('2d'); c.hidden=false;

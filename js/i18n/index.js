@@ -5,8 +5,8 @@ import en from './en.js';
 export const T = { es, ca, en };
 export const LANGS = Object.keys(T);
 
-// Idioma: el primero de la lista del navegador que tengamos (ca, es, en).
-// Valenciano (ca-ES-valencia) y gallego/euskera caen en ca/es; el resto, en inglés.
+// Language: the first one in the browser's preference list that we support (ca, es, en).
+// Valencian (ca-ES-valencia) maps to ca, Galician/Basque to es; anything else falls back to en.
 export function detectLang(){
   const list=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'']).map(l=>String(l).toLowerCase());
   for(const l of list){

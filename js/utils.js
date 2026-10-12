@@ -1,6 +1,6 @@
 import { t } from './state.js';
 
-// ---------- utilidades ----------
+// ---------- utilities ----------
 export const $ = (s,r=document)=>r.querySelector(s);
 export const ri = (a,b)=>a+Math.floor(Math.random()*(b-a+1));
 export const pick = a=>a[Math.floor(Math.random()*a.length)];

@@ -1,4 +1,4 @@
-/* ---------- juegos ---------- */
+/* ---------- games ---------- */
 .prompt{font:800 clamp(2.6rem,13vw,4.2rem) var(--f-display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
 .answer{min-width:3.2ch;padding:6px 18px;border-radius:16px;border:3px solid var(--line);background:var(--surface);font:800 2.4rem var(--f-display);font-variant-numeric:tabular-nums;color:var(--muted);transition:border-color .1s,color .1s}
 .answer.typing{color:var(--ink);border-color:var(--line-deep)}
@@ -52,12 +52,12 @@
 .opt.win small{color:var(--ok)}
 .opt.lose{border-color:var(--bad)}
 
-/* Reglas */
+/* Switch */
 .rule-card{width:min(100%,300px);border-radius:26px;border:4px solid var(--rc);background:color-mix(in oklab,var(--rc) 10%,var(--surface));padding:18px 16px 26px;display:grid;gap:10px;justify-items:center;transition:border-color .15s,background .15s}
 .rule-chip{display:inline-block;padding:6px 12px;border-radius:99px;background:var(--rc);color:#fff;font:800 .88rem var(--f-body);letter-spacing:.02em}
 .rule-num{font:800 6rem var(--f-display);line-height:1;font-variant-numeric:tabular-nums}
 
-/* Eco (n-back) */
+/* Echo (n-back) */
 .nb-card{width:150px;height:150px;border-radius:30px;display:grid;place-items:center;background:var(--surface);border:3px solid var(--line);border-bottom-width:7px;font:800 5.4rem var(--f-display);color:var(--d-mem);transition:border-color .12s}
 .nb-card.ok{border-color:var(--ok)}
 .nb-card.bad{border-color:var(--bad)}
@@ -67,7 +67,7 @@
 .nb-dots i.on{background:var(--d-mem)}
 .nb-note{min-height:1.4em;font-weight:800;font-size:.9rem;color:var(--bad)}
 
-/* Espejo */
+/* Mirror */
 .shapes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%}
 .shape-box{aspect-ratio:1;max-width:100%;border-radius:22px;background:var(--surface);border:2px solid var(--line);display:grid;place-items:center;padding:8%}
 .shape-box svg{width:100%;height:100%;overflow:visible}

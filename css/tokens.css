@@ -1,4 +1,4 @@
-/* Paleta, tipografías y temas claro/oscuro */
+/* Palette, typefaces and light/dark themes */
 /* Layout: one centred app column, mobile-first; chunky "pressable" cards and buttons on a cool canvas */
 :root{
   --bg:#F3F5FA; --surface:#FFFFFF; --ink:#151A30; --muted:#626A85; --line:#DFE3EE; --line-deep:#C7CDDC; --grid:#E9ECF3;

@@ -1,7 +1,7 @@
 import { $, ri, pick } from '../utils.js';
 import { bump } from './shared.js';
 
-// 6) ¿Cuál es mayor?
+// Which is bigger? — compare two expressions
 export function initCompare(st, api){
   let level=1, streak=0, A, B, lock=false;
   st.innerHTML = `<div class="mid"><div class="hint">${api.t().bigger}</div><div class="vs"><button class="opt" id="o0"></button><button class="opt" id="o1"></button></div></div>`;

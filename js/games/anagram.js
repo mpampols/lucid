@@ -2,7 +2,7 @@ import { $, shuffle } from '../utils.js';
 import { sfx } from '../sound.js';
 import { bump } from './shared.js';
 
-// 5) Anagramas
+// Anagrams
 export function initAnagram(st, api){
   const L=api.t(), words=shuffle([...L.words]); let wi=0, word='', tiles=[], built=[], lock=false;
   st.innerHTML = `<div class="mid"><div class="built" id="b"></div><div class="tiles" id="tl"></div></div>

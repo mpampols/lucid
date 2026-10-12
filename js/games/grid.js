@@ -2,7 +2,7 @@ import { $, ri } from '../utils.js';
 import { sfx } from '../sound.js';
 import { bump } from './shared.js';
 
-// 4) Constelación — memoria visoespacial (tipo Corsi)
+// Constellation — visuospatial memory (Corsi-style)
 export function initGrid(st, api){
   const L=api.t(); let len=3, seq=[], pos=0, phase='show', fails=0, cells=[];
   st.innerHTML = `<div class="mid"><div class="hint" id="h"></div><div class="grid locked" id="g"></div></div>`;

@@ -1,5 +1,5 @@
-// Registro de juegos. Para añadir uno: crea su archivo en esta carpeta,
-// regístralo aquí y añade sus textos en js/i18n/*.js (games.<id>).
+// Game registry. To add a game: create its file in this folder,
+// register it here and add its texts in js/i18n/*.js (games.<id>).
 import { hash, seeded } from '../utils.js';
 import { initMath } from './math.js';
 import { initStroop } from './stroop.js';
@@ -11,7 +11,7 @@ import { initSwitch } from './switch.js';
 import { initNback } from './nback.js';
 import { initRotate } from './rotate.js';
 
-// ---------- juegos ----------
+// ---------- games ----------
 export const GAMES = {
   math:{domain:'math', time:60, init:initMath},
   stroop:{domain:'attn', time:45, init:initStroop},
@@ -27,7 +27,7 @@ export const ORDER = ['math','stroop','digits','grid','anagram','compare','switc
 export const DOMAINS = ['math','attn','mem','lang','space','speed','flex'];
 export const DAILY_N = 4;
 
-// Plan diario: igual para todos ese día, sin repetir área
+// Daily plan: the same for everyone on a given day, one game per area
 export function dailyPlan(key){
   const r=seeded(hash('lucid'+key)), a=[...ORDER];
   for(let i=a.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }

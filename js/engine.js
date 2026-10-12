@@ -1,4 +1,4 @@
-// Motor de partida: intro, temporizador, puntuación, resultados y resumen del día
+// Game engine: intro, timer, scoring, results and daily summary
 import { S, save, t } from './state.js';
 import { $, fmtN, dayKey } from './utils.js';
 import { sfx } from './sound.js';
@@ -11,7 +11,7 @@ import { showView, goHome, goStats } from './nav.js';
 const stage = $('#stage'), play = $('#play');
 
 /* =========================================================
-   Motor de partida
+   Game engine
    ========================================================= */
 let run = null;
 
@@ -150,10 +150,10 @@ export function openSummary(celebrate){
   if(celebrate){ sfx.fanfare(); confetti(140); }
 }
 
-// Sale de la partida en curso (al volver al inicio o a progreso)
+// Leave the current game (when going back to home or progress)
 export function leaveRun(){ abortRun(); run=null; }
 
-// Teclado global durante el juego
+// Global keyboard handling while playing
 export function handleKey(e){
   if(e.key==='Escape' && !play.hidden){ goHome(); return; }
   if(run && run.phase==='game' && run.onKey){ run.onKey(e); return; }

@@ -1,4 +1,4 @@
-/* Base, cabecera, pestañas y botones */
+/* Base styles, header, tabs and buttons */
 html,body{height:100%}
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body{margin:0}

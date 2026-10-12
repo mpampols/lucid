@@ -1,7 +1,7 @@
 import { $, ri, pick } from '../utils.js';
 import { keypadHTML, bindKeypad, bump } from './shared.js';
 
-// 1) Cálculo mental — dificultad adaptativa
+// Mental maths — adaptive difficulty
 export function initMath(st, api){
   let level=1, streak=0, ans=0, input='', lock=false;
   st.innerHTML = `<div class="mid"><div class="prompt" id="q"></div><div class="answer" id="a">?</div></div>${keypadHTML()}`;

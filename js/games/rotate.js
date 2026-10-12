@@ -1,7 +1,7 @@
 import { $, pick } from '../utils.js';
 import { bump, pressFx } from './shared.js';
 
-// 9) Espejo — rotación mental con poliominós
+// Mirror — mental rotation with polyominoes
 export function initRotate(st, api){
   const L=api.t(); let level=1, streak=0, same=true, lock=false;
   st.innerHTML = `<div class="mid"><div class="hint">${L.mirrorQ}</div><div class="shapes"><div class="shape-box" id="s0"></div><div class="shape-box" id="s1"></div></div></div>

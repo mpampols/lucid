@@ -1,7 +1,7 @@
 import { $, pick } from '../utils.js';
 import { bump } from './shared.js';
 
-// 2) Tinta — efecto Stroop
+// Ink — Stroop effect
 export function initStroop(st, api){
   const keys=['red','blue','green','yellow'], names=api.t().colors; let ink, lock=false;
   st.innerHTML = `<div class="mid"><div class="hint">${api.t().tapInk}</div><div class="stroop-word" id="w"></div></div>

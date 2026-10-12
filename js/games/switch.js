@@ -1,7 +1,7 @@
 import { $, pick } from '../utils.js';
 import { bump, pressFx } from './shared.js';
 
-// 7) Reglas — cambio de tarea (task switching)
+// Switch — task switching
 export function initSwitch(st, api){
   const L=api.t();
   const RULES={

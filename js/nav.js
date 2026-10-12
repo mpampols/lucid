@@ -1,4 +1,4 @@
-// Navegación entre vistas: inicio, progreso y partida
+// Navigation between views: home, progress and play
 import { $ } from './utils.js';
 import { leaveRun } from './engine.js';
 import { renderTop } from './views/topbar.js';

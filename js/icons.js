@@ -1,4 +1,4 @@
-// ---------- iconos ----------
+// ---------- icons ----------
 const ICON_PATHS = {
   math:'<path d="M7 4v6M4 7h6M14 7h6M5 14l4 4M9 14l-4 4M14 16h6"/><circle cx="17" cy="13" r=".9" fill="currentColor" stroke="none"/><circle cx="17" cy="19" r=".9" fill="currentColor" stroke="none"/>',
   stroop:'<path d="M12 3.5c3 4 6 7 6 10.5a6 6 0 0 1-12 0c0-3.5 3-6.5 6-10.5z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/>',

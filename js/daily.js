@@ -1,4 +1,4 @@
-// Entrenamiento del día y racha
+// Daily training and streak
 import { S } from './state.js';
 import { dayKey, yesterdayKey } from './utils.js';
 import { GAMES, dailyPlan } from './games/index.js';

@@ -1,4 +1,4 @@
-// Castellano
+// Spanish
 export default {
   locale:'es-ES',
   tabHome:'Entrenar', tabStats:'Progreso',
@@ -20,11 +20,11 @@ export default {
   seeYou:'El cerebro también necesita su rutina. Nos vemos mañana.',
   footer:'Tu progreso se guarda en este navegador. Sin cuentas, sin anuncios, sin IA.', madeBy:'Hecho por', source:'Código en GitHub',
   quit:'Salir', soundOn:'Sonido activado', soundOff:'Sonido desactivado',
-  // juegos nuevos
+  // newer games
   parityQ:'¿Par o impar?', even:'Par', odd:'Impar', sizeQ:'¿Menor o mayor que 5?', less:'Menor', more:'Mayor',
   match:'Coincide', nbackQ:n=>n===1?'¿Es la misma letra que la anterior?':`¿Es la misma que hace ${n} letras?`, nbackLevel:n=>`Nivel ${n}-atrás`, nbackMiss:'Era una coincidencia',
   same:'Iguales', mirror:'Espejo', mirrorQ:'¿Es la misma figura girada o su reflejo?',
-  // progreso
+  // progress view
   progTitle:'Tu progreso', curStreak:'Racha actual', bestStreak:'Mejor racha', sessions:'Entrenamientos completados', plays:'Partidas jugadas',
   activity:'Actividad', activitySub:'Últimas 16 semanas', lessK:'Menos', moreK:'Más',
   dayTip:(d,n,done)=>`${d} · ${n} ${n===1?'partida':'partidas'}${done?' · entrenamiento completo':''}`,

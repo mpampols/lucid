@@ -1,4 +1,4 @@
-// Català
+// Catalan
 export default {
   locale:'ca-ES',
   tabHome:'Entrenar', tabStats:'Progrés',

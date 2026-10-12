@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lúcid · Entrena tu mente</title>
 <meta name="description" content="Entrenamiento mental diario: cálculo, memoria, atención, lenguaje y más. Gratis, sin registro, en español, catalán e inglés.">
+<meta name="author" content="Marc Pàmpols">
 <meta name="theme-color" content="#F3F5FA" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0E1120" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect width='30' height='30' rx='9' fill='%23FF5C39'/%3E%3Cpath d='M15 6c.8 4.6 3.4 7.2 8 8-4.6.8-7.2 3.4-8 8-.8-4.6-3.4-7.2-8-8 4.6-.8 7.2-3.4 8-8z' fill='%23fff'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Lúcid">
 <meta property="og:description" content="Entrena lo que la IA te está haciendo olvidar. Gratis y sin registro.">
+<meta property="og:url" content="https://mpampols.github.io/lucid/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
@@ -106,7 +109,9 @@ p{margin:0}
 .game .dom{font-size:.8rem;font-weight:700;color:var(--muted)}
 .game .best{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .new{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:99px;background:var(--accent);color:var(--on-accent);font:800 .62rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;vertical-align:3px}
-.foot{margin-top:28px;font-size:.85rem;color:var(--muted);text-align:center;text-wrap:balance}
+.foot{margin-top:32px;font-size:.85rem;color:var(--muted);text-align:center;text-wrap:balance;display:grid;gap:6px}
+.foot a{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-color:var(--line-deep);text-underline-offset:3px}
+.foot a:hover{text-decoration-color:var(--accent)}
 
 /* ---------- progress ---------- */
 .prog{display:grid;gap:14px}
@@ -316,6 +321,7 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.9rem;min-width:390px}
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
 </head>
 <body>
+<noscript><p style="padding:24px;font-family:system-ui,sans-serif">Lúcid necesita JavaScript para funcionar. · Lúcid needs JavaScript to run.</p></noscript>
 <div id="app">
   <div id="chrome">
     <header class="topbar">
@@ -337,6 +343,11 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.9rem;min-width:390px}
 
   <main id="home"></main>
   <main id="stats" hidden></main>
+
+  <footer class="foot" id="siteFoot">
+    <p id="footNote"></p>
+    <p class="credit"><span id="footBy"></span> <a href="https://marcpampols.net" target="_blank" rel="noopener">Marc Pàmpols</a> · <a href="https://github.com/mpampols/lucid" target="_blank" rel="noopener" id="footCode"></a></p>
+  </footer>
 
   <section id="play" hidden>
     <div class="play-top">
@@ -376,7 +387,7 @@ const T = {
     tapInk:'¿De qué color es la tinta?', bigger:'Toca el resultado más alto',
     dayDone:'Entrenamiento completado', dayTotal:'puntos en total',
     seeYou:'El cerebro también necesita su rutina. Nos vemos mañana.',
-    footer:'Tu progreso se guarda en este navegador. Sin cuentas, sin anuncios, sin IA.',
+    footer:'Tu progreso se guarda en este navegador. Sin cuentas, sin anuncios, sin IA.', madeBy:'Hecho por', source:'Código en GitHub',
     quit:'Salir', soundOn:'Sonido activado', soundOff:'Sonido desactivado',
     // juegos nuevos
     parityQ:'¿Par o impar?', even:'Par', odd:'Impar', sizeQ:'¿Menor o mayor que 5?', less:'Menor', more:'Mayor',
@@ -430,7 +441,7 @@ const T = {
     tapInk:'De quin color és la tinta?', bigger:'Toca el resultat més alt',
     dayDone:'Entrenament completat', dayTotal:'punts en total',
     seeYou:'El cervell també necessita la seva rutina. Ens veiem demà.',
-    footer:'El teu progrés es desa en aquest navegador. Sense comptes, sense anuncis, sense IA.',
+    footer:'El teu progrés es desa en aquest navegador. Sense comptes, sense anuncis, sense IA.', madeBy:'Fet per', source:'Codi a GitHub',
     quit:'Sortir', soundOn:'So activat', soundOff:'So desactivat',
     parityQ:'Parell o senar?', even:'Parell', odd:'Senar', sizeQ:'Menor o major que 5?', less:'Menor', more:'Major',
     match:'Coincideix', nbackQ:n=>n===1?"És la mateixa lletra que l'anterior?":`És la mateixa que fa ${n} lletres?`, nbackLevel:n=>`Nivell ${n}-enrere`, nbackMiss:'Era una coincidència',
@@ -482,7 +493,7 @@ const T = {
     tapInk:'What colour is the ink?', bigger:'Tap the higher result',
     dayDone:'Training complete', dayTotal:'points in total',
     seeYou:'Your brain needs a routine too. See you tomorrow.',
-    footer:'Your progress is saved in this browser. No accounts, no ads, no AI.',
+    footer:'Your progress is saved in this browser. No accounts, no ads, no AI.', madeBy:'Made by', source:'Source on GitHub',
     quit:'Quit', soundOn:'Sound on', soundOff:'Sound off',
     parityQ:'Odd or even?', even:'Even', odd:'Odd', sizeQ:'Less or more than 5?', less:'Less', more:'More',
     match:'Match', nbackQ:n=>n===1?'Same letter as the previous one?':`Same letter as ${n} back?`, nbackLevel:n=>`Level ${n}-back`, nbackMiss:'That was a match',
@@ -530,13 +541,14 @@ const T = {
    ========================================================= */
 const Store = {
   KEY:'lucid.v2', LEGACY:'lucid.v1', MAX_HISTORY:5000,
-  defaults(){ return {v:2, lang:detectLang(), sound:true, best:{}, streak:{count:0,last:null,best:0}, days:{}, history:[]}; },
+  defaults(){ return {v:2, lang:detectLang(), langChosen:false, sound:true, best:{}, streak:{count:0,last:null,best:0}, days:{}, history:[]}; },
   normalize(o){
     const d=this.defaults(), s=Object.assign(d, o||{});
     s.v=2; s.best=s.best||{}; s.days=s.days||{}; s.history=Array.isArray(s.history)?s.history:[];
     s.streak=Object.assign({count:0,last:null,best:0}, s.streak||{});
     s.streak.best=Math.max(s.streak.best||0, s.streak.count||0);
-    if(!T[s.lang]) s.lang=d.lang;
+    // Mientras el usuario no elija idioma a mano, se sigue el del navegador
+    if(!s.langChosen || !T[s.lang]) s.lang=detectLang();
     return s;
   },
   migrateV1(o){
@@ -572,9 +584,19 @@ const Store = {
       return data.history ? this.normalize(data) : this.migrateV1(data);
     }catch(e){ return null; }
   },
-  reset(keep){ const s=this.defaults(); s.lang=keep.lang; s.sound=keep.sound; this.save(s); return s; }
+  reset(keep){ const s=this.defaults(); s.lang=keep.lang; s.langChosen=keep.langChosen; s.sound=keep.sound; this.save(s); return s; }
 };
-function detectLang(){ const l=(navigator.language||'es').toLowerCase(); return l.startsWith('ca')?'ca':l.startsWith('en')?'en':'es'; }
+// Idioma: el primero de la lista del navegador que tengamos (ca, es, en).
+// Valenciano (ca-ES-valencia) y gallego/euskera caen en ca/es; el resto, en inglés.
+function detectLang(){
+  const list=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'']).map(l=>String(l).toLowerCase());
+  for(const l of list){
+    if(l.startsWith('ca')) return 'ca';
+    if(l.startsWith('es')||l.startsWith('gl')||l.startsWith('eu')) return 'es';
+    if(l.startsWith('en')) return 'en';
+  }
+  return 'en';
+}
 let S = Store.load();
 const save = ()=>Store.save(S);
 const t = () => T[S.lang] || T.es;
@@ -665,7 +687,7 @@ const home=$('#home'), statsView=$('#stats'), play=$('#play'), stage=$('#stage')
 let view='home';
 function showView(v){
   view=v;
-  home.hidden = v!=='home'; statsView.hidden = v!=='stats'; chrome.hidden = v==='play'; play.hidden = v!=='play';
+  home.hidden = v!=='home'; statsView.hidden = v!=='stats'; chrome.hidden = v==='play'; $('#siteFoot').hidden = v==='play'; play.hidden = v!=='play';
   $('#tabHome').setAttribute('aria-selected', v==='home'); $('#tabStats').setAttribute('aria-selected', v==='stats');
   window.scrollTo(0,0);
 }
@@ -675,6 +697,7 @@ function renderTop(){
   const pill=$('#streakPill'); pill.innerHTML=flameSVG()+n; pill.classList.toggle('off', n===0); pill.title=L.streak(n);
   $('#lang').value=S.lang; document.documentElement.lang=S.lang;
   const sb=$('#soundBtn'); sb.innerHTML=soundSVG(S.sound); sb.setAttribute('aria-label', S.sound?L.soundOn:L.soundOff); sb.title=sb.getAttribute('aria-label');
+  $('#footNote').textContent=L.footer; $('#footBy').textContent=L.madeBy; $('#footCode').textContent=L.source;
   $('#tabHome').innerHTML=tabIcons.home+L.tabHome; $('#tabStats').innerHTML=tabIcons.stats+L.tabStats;
 }
 
@@ -713,7 +736,7 @@ function renderHome(){
           <span class="best">${b?`${L.best}: <b>${fmtN(b)}</b>`:L.notPlayed}</span>
         </button>`; }).join('')}
     </div>
-    <p class="foot">${L.footer}</p>`;
+`;
   $('#dailyBtn').onclick = ()=>{ sfx.tap(); if(day.done) openSummary(false); else openGame(nextId,true); };
   home.querySelectorAll('.game').forEach(b=>b.onclick=()=>{ sfx.tap(); openGame(b.dataset.g,false); });
 }
@@ -1431,7 +1454,7 @@ function confetti(n){
 }
 
 // ---------- eventos globales ----------
-$('#lang').onchange=e=>{ S.lang=e.target.value; save(); renderTop(); if(view==='stats') renderStats(); else renderHome(); };
+$('#lang').onchange=e=>{ S.lang=e.target.value; S.langChosen=true; save(); renderTop(); if(view==='stats') renderStats(); else renderHome(); };
 $('#soundBtn').onclick=()=>{ S.sound=!S.sound; save(); renderTop(); if(S.sound) sfx.tap(); };
 $('#tabHome').onclick=()=>{ sfx.tap(); goHome(); };
 $('#tabStats').onclick=()=>{ sfx.tap(); goStats(); };

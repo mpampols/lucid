@@ -2,11 +2,12 @@
 import { S, save, t } from './state.js';
 import { $, fmtN, dayKey } from './utils.js';
 import { sfx } from './sound.js';
-import { icon, flameSVG, heartSVG } from './icons.js';
+import { icon, flameSVG, heartSVG, tabIcons } from './icons.js';
 import { GAMES } from './games/index.js';
 import { getDay, bumpStreak, currentStreak } from './daily.js';
 import { confetti } from './confetti.js';
 import { showView, goHome, goStats } from './nav.js';
+import { shareDaily, challengeOutcome } from './share.js';
 
 const stage = $('#stage'), play = $('#play');
 
@@ -131,7 +132,7 @@ function renderResult(isBest, dayCompleted){
 
 export function openSummary(celebrate){
   abortRun(); run={phase:'summary', timers:[]}; showView('play');
-  const L=t(), day=getDay(), total=day.plan.reduce((a,x)=>a+(day.games[x]||0),0), n=currentStreak();
+  const L=t(), day=getDay(), total=day.plan.reduce((a,x)=>a+(day.games[x]||0),0), n=currentStreak(), outcome=challengeOutcome();
   $('#track').style.visibility='hidden'; $('#hud').innerHTML='';
   stage.innerHTML = `
     <div class="result">
@@ -143,9 +144,12 @@ export function openSummary(celebrate){
       <ol class="sum-list">
         ${day.plan.map(id=>`<li><span class="tile-ic" style="--dc:var(--d-${GAMES[id].domain})">${icon(id,20)}</span><span>${L.games[id].name}</span><b>${fmtN(day.games[id]??0)}</b></li>`).join('')}
       </ol>
+      ${outcome?`<p class="challenge-line">${outcome}</p>`:''}
       <p class="muted" style="max-width:32ch">${L.seeYou}</p>
     </div>
-    <div class="btn-row"><button class="btn wide" id="b1">${L.tabStats}</button><button class="btn ghost wide" id="b2">${L.home}</button></div>`;
+    <div class="btn-row"><button class="btn wide" id="bShare">${tabIcons.share}${L.shareResult}</button>
+      <div class="row2"><button class="btn ghost" id="b1">${L.tabStats}</button><button class="btn ghost" id="b2">${L.home}</button></div></div>`;
+  $('#bShare').onclick=()=>{ sfx.tap(); shareDaily(); };
   $('#b1').onclick=goStats; $('#b2').onclick=goHome;
   if(celebrate){ sfx.fanfare(); confetti(140); }
 }

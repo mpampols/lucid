@@ -1,0 +1,32 @@
+/* ---------- sharing and challenges ---------- */
+.share-backdrop{position:fixed;inset:0;z-index:20;background:rgba(10,12,24,.55);display:flex;align-items:flex-end;justify-content:center;padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));animation:fade .15s ease-out}
+@media (min-width:560px){ .share-backdrop{align-items:center} }
+.share-sheet{width:min(100%,440px);max-height:100%;overflow-y:auto;background:var(--surface);border:2px solid var(--line);border-radius:26px;padding:18px;display:grid;gap:14px;animation:slideup .2s ease-out}
+.share-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.share-head h3{font-size:1.3rem}
+.share-preview{aspect-ratio:4/5;max-height:44vh;margin:0 auto;width:auto;max-width:100%;border-radius:16px;overflow:hidden;background:var(--bg);display:grid;place-items:center}
+.share-preview img{display:block;width:100%;height:100%;object-fit:contain}
+.share-preview p{padding:16px;text-align:center}
+.share-loading{width:36px;height:36px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--accent);animation:spin .8s linear infinite}
+.share-text{width:100%;resize:none;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);padding:10px 12px;font:600 .85rem/1.45 var(--f-body)}
+.share-actions{display:grid;gap:10px}
+.share-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.share-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.share-grid .btn{margin-bottom:5px;padding-inline:8px;white-space:nowrap;font-size:.9rem}
+.share-chip{display:flex;align-items:center;justify-content:center;height:44px;border-radius:13px;border:2px solid var(--line);background:var(--surface);color:var(--ink);font:800 .9rem var(--f-body);text-decoration:none;box-shadow:0 4px 0 var(--line);transition:transform .05s,box-shadow .05s}
+.share-chip:active{transform:translateY(4px);box-shadow:0 0 0 var(--line)}
+.share-chip:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.btn[disabled]{opacity:.5;pointer-events:none}
+
+.challenge-banner{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:16px;background:color-mix(in oklab,var(--accent) 12%,var(--surface));border:2px solid color-mix(in oklab,var(--accent) 40%,var(--surface));font-size:.95rem;font-weight:700}
+.challenge-banner svg{flex:none;color:var(--accent);margin-top:2px}
+.challenge-banner b,.challenge-line b{color:var(--accent);font-variant-numeric:tabular-nums}
+.challenge-line{font-weight:800;font-size:1.05rem;max-width:32ch;text-wrap:balance}
+
+.prog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.prog-head h2{font-size:1.6rem}
+.prog-head .btn{margin-bottom:5px}
+
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes slideup{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}

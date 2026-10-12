@@ -6,6 +6,7 @@ import { icon, tabIcons } from '../icons.js';
 import { currentStreak } from '../daily.js';
 import { goHome } from '../nav.js';
 import { renderTop } from './topbar.js';
+import { shareProgress } from '../share.js';
 
 const statsView = $('#stats');
 
@@ -44,6 +45,7 @@ export function renderStats(){
   if(!statsGame || !GAMES[statsGame]) statsGame=H[H.length-1].g;
 
   statsView.innerHTML = `<div class="prog">
+    <div class="prog-head"><h2>${L.progTitle}</h2><button class="btn ghost small" id="shareProg">${tabIcons.share}${L.share}</button></div>
     <div class="tiles4">
       <div class="stat hot"><b>${currentStreak()}</b><span>${L.curStreak}</span></div>
       <div class="stat"><b>${S.streak.best||0}</b><span>${L.bestStreak}</span></div>
@@ -88,6 +90,7 @@ export function renderStats(){
   </div>`;
 
   statsView.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{ statsGame=c.dataset.g; statsView.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed', x===c)); drawLine(); });
+  $('#shareProg').onclick=shareProgress;
   bindHeatTips(); drawLine(); bindDataCard();
 }
 

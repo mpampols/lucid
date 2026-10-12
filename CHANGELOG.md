@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 — 2026-10-12
+- Share the daily result: Wordle-style text with a 1–5 rating per game against your own best, plus a title based on how the day went.
+- Image cards (1080×1350) for the daily result and for overall progress.
+- Share sheet with the device's native share menu, WhatsApp, X, Telegram, copy text and download image.
+- Challenge links (`?reto=<score>&d=<day>`): the home screen shows the challenge and the daily summary says whether you beat it.
+- Daily trainings are numbered (#1 = 11 Oct 2026).
+
 ## 0.3.1 — 2026-10-12
 - README, changelog and code comments translated to English.
 

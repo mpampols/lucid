@@ -1,7 +1,8 @@
 import { S, t } from '../state.js';
 import { $, fmtN } from '../utils.js';
 import { sfx } from '../sound.js';
-import { icon, checkSVG } from '../icons.js';
+import { icon, checkSVG, tabIcons } from '../icons.js';
+import { shareDaily, challengeBanner, dayNumber } from '../share.js';
 import { GAMES, ORDER } from '../games/index.js';
 import { getDay, currentStreak } from '../daily.js';
 import { openGame, openSummary } from '../engine.js';
@@ -14,12 +15,12 @@ export function renderHome(){
   const todayPts=Object.values(day.games).reduce((a,b)=>a+b,0);
   const trained=Object.values(S.days).filter(d=>d.done).length;
   const date=new Date().toLocaleDateString(L.locale,{weekday:'long',day:'numeric',month:'long'});
-  const n=currentStreak();
+  const n=currentStreak(), banner=challengeBanner();
   home.innerHTML = `
     <p class="lede">${L.tagline}</p>
     <section class="daily" aria-labelledby="dt">
       <div>
-        <div class="eyebrow">${date}</div>
+        <div class="eyebrow">${date} · #${dayNumber()}</div>
         <h2 id="dt">${day.done?L.doneTitle:L.today}</h2>
         <p class="muted">${day.done?L.doneSub:L.todaySub}</p>
       </div>
@@ -27,7 +28,8 @@ export function renderHome(){
         ${plan.map(id=>{ const isDone=id in day.games, cur=id===nextId;
           return `<li class="node-wrap"><span class="node ${isDone?'':cur?'cur':'todo'}" style="--dc:var(--d-${GAMES[id].domain})">${icon(id)}${isDone?`<span class="check">${checkSVG}</span>`:''}</span><span class="node-label">${L.games[id].name}</span></li>`; }).join('')}
       </ol>
-      ${day.done ? `<button class="btn ghost wide" id="dailyBtn">${L.summary}</button>` : `<button class="btn wide" id="dailyBtn">${done?L.cont:L.start}</button>`}
+      ${banner?`<p class="challenge-banner"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg><span>${banner}</span></p>`:''}
+      ${day.done ? `<div class="row2"><button class="btn" id="shareBtn">${tabIcons.share}${L.share}</button><button class="btn ghost" id="dailyBtn">${L.summary}</button></div>` : `<button class="btn wide" id="dailyBtn">${done?L.cont:L.start}</button>`}
     </section>
     <div class="stats-line">
       <span><b>${n}</b> ${L.streakWord(n)}</span>
@@ -44,6 +46,7 @@ export function renderHome(){
         </button>`; }).join('')}
     </div>
 `;
+  const sb=$('#shareBtn'); if(sb) sb.onclick=()=>{ sfx.tap(); shareDaily(); };
   $('#dailyBtn').onclick = ()=>{ sfx.tap(); if(day.done) openSummary(false); else openGame(nextId,true); };
   home.querySelectorAll('.game').forEach(b=>b.onclick=()=>{ sfx.tap(); openGame(b.dataset.g,false); });
 }
